@@ -78,11 +78,13 @@ int main() {
   s1.putDetails("vasos pavlika", 123, 90, 4);
   s1.getDetails(); // Display student s1
   // create and array of student objects
+  int s[] = {2, 3, 4, 5};
+
   for (int i = 2; i < 9; i++) {
-    student(s[i]);
-    for (int j = 2; j < 10; j++) {
-      s[j].getDetails();
-    }
+    student s[i];
+    // for (int j = 2; j < 10; j++) {
+    //  s[j].getDetails();
+    //}
   }
   // int mypointer
   //   // display array of students
