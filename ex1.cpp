@@ -20,7 +20,7 @@ private:
   string name;
   int rollNo;
   int total_marks;
-  int year;
+  int year; // Year of study, ie 1-4
 
 public:
   // default constructor
@@ -40,27 +40,93 @@ public:
     cout << "Year: \t\t" << year << "\n";
   }
   void editName(string newname) { this->name = newname; }
+  void editYear(int newYear) {
+    if (year >= 4) {
+      cout << "**************************************" << "\n";
+      cout << "** " << "Student has to leave University!" << " **" << "\n";
+      cout << "**************************************" << "\n";
+    } else {
+      this->year = newYear;
+    }
+  }
 };
 
+// void EnterNewName(string newname) {
+//   // string newname;
+//   string first_name;
+//   string last_name;
+//   cin >> first_name >> last_name;
+//   newname = first_name + " " + last_name;
+//   s1.editName(newname);
+//   s1.getDetails();
+// }
+
 int main() {
+  // vars
   string newname;
   string first_name;
   string last_name;
+  int newYear;
   int choice;
-  student s1;
-  s1.putDetails("vasos pavlika", 123, 90, 2025);
-  s1.getDetails();
-  cout << "To edit name, Type 1 or 0 to quit: " << endl;
-  cin >> choice;
-  if (choice == 1) {
-    cout << "Enter new name: " << "\n";
-    // cin >> newname;
-    // getline(cin, newname);
+  // program start
 
+  cout << "This program demonstrates a student Class" << endl;
+  //
+  // Define student s1
+  //
+  student s1;
+  s1.putDetails("vasos pavlika", 123, 90, 4);
+  s1.getDetails(); // Display student s1
+  // create and array of student objects
+  for (int i = 2; i < 9; i++) {
+    student(s[i]);
+    for (int j = 2; j < 10; j++) {
+      s[j].getDetails();
+    }
+  }
+  // int mypointer
+  //   // display array of students
+  //   for (int i = 1; i < 10; i++) {
+  //     cout << *(mypointer + i) << "\n";
+  //   }
+  //  do {
+  cout << "Type 0 to quit: " << "\n"
+       << "Type 1 to edit Name:" << "\n"
+       << "Type 2, to edit Year:" << "\n ";
+  cin >> choice;
+  switch (choice) {
+  case 0:
+    cout << "Quitting..." << endl;
+    return 0;
+  case 1:
+    cout << "Edit Student Name" << endl;
     cin >> first_name >> last_name;
     newname = first_name + " " + last_name;
     s1.editName(newname);
     s1.getDetails();
+
+    break;
+  case 2:
+    cout << "Edit Year" << endl;
+    cin >> newYear;
+    s1.editYear(newYear);
+    s1.getDetails();
+    break;
+  default:
+    cout << "Please choose and option!" << endl;
   }
+  //} while (choice != 0);
+
+  // if (choice == 1) {
+  //   cout << "Enter new name: " << "\n";
+  //   // cin >> newname;
+  //   // getline(cin, newname);
+  //
+  //   cin >> first_name >> last_name;
+  //   newname = first_name + " " + last_name;
+  //   s1.editName(newname);
+  //   s1.getDetails();
+  // }
+  //
   return 0;
 }
