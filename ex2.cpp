@@ -29,19 +29,28 @@ public:
   // default constructor
   student() {};
   // overload constructor
-  void putDetails(string name, int rollNo, int totalMarks, int year) {
+  void putDetails(string name, int rollNo, int totalMarks, int year,
+                  int mathmark, int compmark, int physmark) {
     this->name = name;
     this->rollNo = rollNo;
     this->total_marks = totalMarks;
     this->year = year;
+    this->mathMark = mathmark;
+    this->computingMark = compmark;
+    this->physicsMark = physmark;
+  }
+  // access functions
+  void getDetails() {
+    cout << "Student Name: \t\t" << name << "\n";
+    cout << "Student ID: \t\t" << rollNo << "\n";
+    cout << "Total Marks: \t\t" << total_marks << "%" << "\n";
+    cout << "Year: \t\t\t" << year << "\n";
+    cout << "Maths: \t\t\t" << mathMark << "%" << "\n";
+    cout << "Computing: \t\t" << computingMark << "%" << "\n";
+    cout << "Physics: \t\t" << physicsMark << "%" << "\n";
   }
 
-  void getDetails() {
-    cout << "Student Name: \t" << name << "\n";
-    cout << "Student ID: \t" << rollNo << "\n";
-    cout << "Total Marks: \t" << total_marks << "%" << "\n";
-    cout << "Year: \t\t" << year << "\n";
-  }
+  // mutator functions
   void editName(string newname) { this->name = newname; }
   void editYear(int newYear) {
     if (year >= 4) {
@@ -52,12 +61,51 @@ public:
       this->year = newYear;
     }
   }
+  // int averageMark(int mathMark, int computingMark, int physicsMark);
+  // void gradeMark(int mathIn, int CompIn, int physicsIn);
+  // void gradeMark(int mark1, int mark2);
+
   int averageMark(int mathMark, int computingMark, int physicsMark) {
+    // function to calculate average marks,
+    // assuming all marks are weighted equally
+    int Num_of_subjects = 3;
     int average;
-    return average = (mathMark + computingMark + physicsMark) / 3;
+    int subject_tot_marks;
+    // do the calculation , can be used with overloads
+    subject_tot_marks = mathMark + computingMark + physicsMark;
+    average = subject_tot_marks / Num_of_subjects;
+    return average;
+  }
+
+  void gradeMark(int mathIn, int CompIn, int physicsIn) {
+    int sum = (mathIn + CompIn + physicsIn);
+    int avg = sum / 3;
+    if (avg >= 70)
+      cout << "First" << "\n";
+    else if (avg >= 60 && avg <= 69)
+      cout << "2:1";
+    else if (avg >= 50 && avg <= 59)
+      cout << "2:2";
+    else if (avg >= 40 && avg <= 49)
+      cout << "pass";
+    else
+      cout << "Fail";
+  }
+  void gradeMark(int mark1, int mark2) {
+    int sum = (mark1 + mark2);
+    int avg = sum / 2;
+    if (avg >= 70)
+      cout << "First" << "\n";
+    else if (avg >= 60 && avg <= 69)
+      cout << "2:1";
+    else if (avg >= 50 && avg <= 59)
+      cout << "2:2";
+    else if (avg >= 40 && avg <= 49)
+      cout << "pass";
+    else
+      cout << "Fail";
   }
 };
-
 // void EnterNewName(string newname) {
 //   // string newname;
 //   string first_name;
@@ -82,8 +130,11 @@ int main() {
   // Define student s1
   //
   student s1;
-  s1.putDetails("vasos pavlika", 123, 90, 4);
+  s1.putDetails("vasos pavlika", 123, 90, 4, 85, 75, 90);
   s1.getDetails(); // Display student s1
+  cout << "The final Grade is: " << "\t";
+  s1.gradeMark(85, 75, 90);
+
   // create and array of student objects
   int s[] = {2, 3, 4, 5};
 
