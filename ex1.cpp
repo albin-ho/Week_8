@@ -80,12 +80,17 @@ int main() {
   // create and array of student objects
   int s[] = {2, 3, 4, 5};
 
-  for (int i = 2; i < 9; i++) {
-    student s[i];
-    // for (int j = 2; j < 10; j++) {
-    //  s[j].getDetails();
-    //}
+  for (int i = 0; i < 4; i++) {
+    cout << "student s" << s[i] << ".getDetails()" << "\n";
+    // cout << "\n";
+    //  for (int j = 2; j < 10; j++) {
+    //   s[j].getDetails();
+    // }
   }
+  // for (int j = 2; j < 4; j++) {
+  //  student s[j];
+  // cout << "\n";
+  //}
   // int mypointer
   //   // display array of students
   //   for (int i = 1; i < 10; i++) {
